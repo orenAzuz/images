@@ -1,0 +1,1 @@
+file to insure that the images folder will be up
