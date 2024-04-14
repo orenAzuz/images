@@ -1,0 +1,39 @@
+
+<div class="p-6 pt-10 h-full bg-gray-100 overflow-y-hidden">
+  <div class="text-4xl  items-center justify-center w-full flex text-gray-800"> Images App </div>
+  <div class="items-center justify-center w-full flex">
+    <div class="absolute border border-2  rounded-xl h-30 p-4 items-center justify-center"
+      *ngIf="message"
+      [ngClass]="success? 'bg-green-300 text-green-900 border-green-900': 'bg-red-300 text-red-900 border-red-900'" >
+      <div class="text-lg">
+          {{success? 'Success' : 'Error'}}
+      </div>
+      <div> {{message}} </div>
+    </div>
+  </div>
+ 
+  <!-- 
+  <input type="file" #fileInput>
+  <button (click)="uploadFile(fileInput)">Upload File</button> -->
+  <div class="w-full pb-6 mt-12">
+    <label for="file-upload" class=" ml-4 rounded-lg cursor-pointer px-6 py-4 border bg-sky-500 text-white font-medium">
+      <input type="file" id="file-upload" (change)="onFileSelected($event)">
+      Upload Image
+    </label>
+  </div>
+
+
+  <div *ngIf="images.length > 0" style="max-height: 75%;" class="p-2 mx-4 mb-2 px-12 bg-gray-200 border-2 rounded-lg flex flex-wrap  overflow-y-auto">
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-6">
+      <ng-container *ngFor="let image of images">
+        <div class="aspect-w-4 aspect-h-5 relative">
+          <img [src]="image.name" class="object-cover rounded-lg" alt="">
+          <button class="absolute top-2 right-2 text-red-600" (click)="deleteImage(image.id)">
+            <mat-icon class="text-white">delete</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
